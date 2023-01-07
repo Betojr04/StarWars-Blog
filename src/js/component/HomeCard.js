@@ -24,7 +24,8 @@ const learnMoreDescription = () => {
 
     return(
         <div className="card-container">
-            {props.character ? <h4 className="card-name">{props.character.name}</h4> : props.planet ? <h4 className="card-name">{props.planet.name}</h4> : props.vehicle ? <h4 className="card-name">{props.vehicle.name}</h4> : null}
+            {props.character ? <h5 className="card-name">{props.character.name}</h5> : props.planet ? <h5 className="card-name">{props.planet.name}</h5> : props.vehicle ? <h5 className="card-name">{props.vehicle.name}</h5> : null}
+            <img src="" />
             <button onClick={learnMoreDescription} className="learn-more-button">Learn More</button>
         </div>
     );
