@@ -1,0 +1,17 @@
+.characters-container {
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+}
+
+.planets-container {
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+}
+
+.vehicles-container {
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+}
