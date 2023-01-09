@@ -17,3 +17,8 @@
     font: .5rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.learn-more-button {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+}
