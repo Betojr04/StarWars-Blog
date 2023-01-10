@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
+import {Context} from '../store/appContext';
 
 export const Navbar = () => {
+	const [favoriteItems, setFavoriteItems] = useState([]);
+	const {store, actions} = useContext(Context)
+
+	useEffect(() => {
+		console.log('favorites', store.favorites)
+		setFavoriteItems(store.favorites)
+	}, [store.favorites])
   return (
     <nav className="navbar navbar-light bg-light mb-3">
       <Link to="/">
-        <span className="navbar-brand mb-0 h1">Star Wars</span>
+        <span style={{marginLeft: '4rem', color: 'gold'}} className="navbar-brand mb-0 h1">Star Wars</span>
       </Link>
       <div className="dropdown">
         <button
@@ -17,21 +25,11 @@ export const Navbar = () => {
           Favorites
         </button>
         <ul className="dropdown-menu">
-          <li>
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
+			{favoriteItems.length ? favoriteItems.map (item =>{
+				return (
+					<li style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} class="dropdown-item">{item.character ? item.character.name : item.planet ? item.planet.name : item.vehicle ? item.vehicl.name : null}<button onClick={() => {actions.removeFavorite(item)}}>X</button></li>
+				)
+			}) : <li style={{display: 'flex', justifyContent: 'center'}}>favorites</li>}
         </ul>
       </div>
     </nav>
